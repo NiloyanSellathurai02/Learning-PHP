@@ -68,7 +68,6 @@
                         <?=$book['name']?> (<?=$book['releaseDate']?>)
                     </a>
                 </li>
-           
         <?php endforeach; ?>    
     </ul>
     <p>
