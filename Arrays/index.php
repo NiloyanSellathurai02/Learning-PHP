@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning PHP</title>
-</head>
-<body>
-    <h1>Recommend Books</h1>
+ <?php 
 
-    <?php 
         $books = [
            [
             "name" =>'Do Androids Dream of Electric Sheep', // Associative Array
@@ -30,48 +21,24 @@
            ]
         ];
 
-        function filterByAuthor($books,$author) {
-            $filteredBook = [];
+        function filter($items,$function) {
+            $filteredItems = [];
 
-            foreach($books as $book){
-                if($book['author'] === $author){
-                    $filteredBook[] = $book;
+            foreach($items as $item){
+                if($function($item)){
+                    $filteredItems[] = $item;
                 }
             }
 
-            return $filteredBook;
+            return $filteredItems;
         }
 
 
 
-    ?>
-    <ul>
-        <!-- Manier 1
-        <?php foreach ($books as $book) : ?>
-        
-            <li></li>
-        
-        <?php endforeach; ?>
-            <br>
-            
-            <!-- Manier 2 -->
-       <?php foreach ($books as $book){
-        // echo "<li>$book</li>";
-       }
-       ?>
-    </ul>
-    <ul>
-        <?php foreach (filterByAuthor($books, 'Philip K. Dick') as $book):?>
-            
-                <li>
-                <a href="<?= $book['purchaseUrl']?>">
-                        <?=$book['name']?> (<?=$book['releaseDate']?>)
-                    </a>
-                </li>
-        <?php endforeach; ?>    
-    </ul>
-    <p>
-    </p>
-    
-</body>
-</html>
+
+        $filteredBooks = array_filter($books , function ($book){
+            return $book['author'] === 'Andy Weir';
+        });
+
+        require 'index.view.php';
+  
