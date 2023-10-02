@@ -1,9 +1,8 @@
 <?php 
 
+require('functions.php');
 
-echo "<pre>";
-var_dump($_SERVER['REQUEST_URI']);
-echo "</pre>";
+
 
 $heading = 'About Us';
 
